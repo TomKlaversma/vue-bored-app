@@ -1,6 +1,9 @@
 <template>
   <div class="BoredButton">
-    <vs-button @click="getActivity">
+    <vs-button
+      :loading="isLoading"
+      @click="getActivity"
+    >
       Find me something to do!
     </vs-button>
   </div>
@@ -8,9 +11,15 @@
 
 <script>
 import { mapActions } from 'vuex';
+import store from '@/store';
 
 export default {
-  name: 'HelloWorld',
+  name: 'BoredButton',
+  computed: {
+    isLoading() {
+      return store.state.activityStore.isFetching;
+    },
+  },
   methods: {
     ...mapActions([
       'getActivity',

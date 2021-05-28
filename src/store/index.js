@@ -1,19 +1,12 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 
-import activityStore from './activityStore';
+import activityStore from './modules/activityStore';
 
 Vue.use(Vuex);
 
 export default new Vuex.Store({
-  state: {
-    ...activityStore.state,
+  modules: {
+    activityStore,
   },
-  mutations: {
-    ...activityStore.mutations,
-  },
-  actions: {
-    ...activityStore.actions,
-  },
-  modules: {},
 });
