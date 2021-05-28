@@ -19,7 +19,8 @@ export default {
     isLoading() {
       return store.state.activityStore.isFetching;
     },
-    text: () => (store.state.activityStore.hasActivity ? 'Nah, I would like something else' : 'Find me something to do!'),
+    text: () => (store.state.activityStore.hasActivity
+      ? 'Nah, I would like something else' : 'Find me something to do!'),
   },
   methods: {
     ...mapActions([
