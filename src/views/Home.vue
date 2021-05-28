@@ -1,11 +1,12 @@
 <template>
   <div class="HomeView">
+    <h1>Are you bored?</h1>
+    <h2>Let's find you an activity</h2>
     <BoredButton />
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
 import BoredButton from '../components/BoredButton';
 
 export default {
