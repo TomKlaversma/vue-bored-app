@@ -27,6 +27,12 @@ module.exports = {
       js: 'never',
       vue: 'never',
     }],
+    'no-param-reassign': ['error', {
+      props: true,
+      ignorePropertyModificationsFor: [
+        'state',
+      ],
+    }],
   },
 
   settings: {
