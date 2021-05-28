@@ -4,7 +4,7 @@
       :loading="isLoading"
       @click="getActivity"
     >
-      Find me something to do!
+      {{ text }}
     </vs-button>
   </div>
 </template>
@@ -19,6 +19,7 @@ export default {
     isLoading() {
       return store.state.activityStore.isFetching;
     },
+    text: () => (store.state.activityStore.hasActivity ? 'Nah, I would like something else' : 'Find me something to do!'),
   },
   methods: {
     ...mapActions([
