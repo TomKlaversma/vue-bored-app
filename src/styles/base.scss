@@ -1,0 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Limelight&family=Nunito+Sans&display=swap');
+
+#app {
+  @include font-secondary;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
