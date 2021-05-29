@@ -19,8 +19,8 @@ if (process.env.NODE_ENV === 'production') {
 // add API
 app.use('/api', api);
 
-app.use((err, req, res) => {
-  console.error(err.error.stack);
+app.use((err, req, res, next) => {
+  console.error(err);
   const status = err.status || 500;
   return res.status(status).send('Something went wrong while processing your request!');
 });
