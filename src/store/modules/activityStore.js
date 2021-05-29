@@ -17,12 +17,14 @@ const initialState = {
     link: null,
     key: null,
   },
+  gif: null,
   error: null,
 };
 
 const mutations = {
-  [ACTIVITY_REQUEST_SUCCESS]: (state, activity) => {
+  [ACTIVITY_REQUEST_SUCCESS]: (state, { activity, gif }) => {
     state.activity = activity;
+    state.gif = gif;
     state.hasActivity = true;
     state.isFetching = false;
   },
@@ -36,17 +38,37 @@ const mutations = {
   },
 };
 
+const getGifForActivity = async ({ activity, type }) => {
+  try {
+    const gifResponse = await axios.get(`${BACKEND_PATH}/gifs/search?q=${activity}&limit=1`);
+    if (gifResponse instanceof Error) throw gifResponse;
+    const { data: { body: [gif] } } = gifResponse;
+    return gif.images.original.url;
+  } catch (e) {
+    const gifResponse = await axios.get(`${BACKEND_PATH}/gifs/search?q=${type}&limit=1`);
+    const { data: { body: [gif] } } = gifResponse;
+    return gif.images.original.url;
+  }
+};
+
 const actions = {
   getActivity: async ({ commit }) => {
     commit(ACTIVITY_REQUEST);
 
-    const response = await axios.get(`${BACKEND_PATH}/activity/random`);
+    const activityResponse = await axios.get(`${BACKEND_PATH}/activity/random`);
 
-    if (response instanceof Error) {
-      return commit(ACTIVITY_REQUEST_FAILED, response);
+    if (activityResponse instanceof Error) {
+      return commit(ACTIVITY_REQUEST_FAILED, activityResponse);
     }
 
-    return commit(ACTIVITY_REQUEST_SUCCESS, response.data.body);
+    const { data: { body: activity } } = activityResponse;
+
+    const gif = await getGifForActivity(activity);
+
+    return commit(ACTIVITY_REQUEST_SUCCESS, {
+      activity,
+      gif,
+    });
   },
 };
 

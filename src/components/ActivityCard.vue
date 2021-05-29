@@ -1,6 +1,9 @@
 <template>
   <div class="ActivityCard">
-    <div class="ActivityCard__Image" />
+    <div
+      class="ActivityCard__Image"
+      :style="{ 'background-image': `url(${gif})` }"
+    />
     <div class="ActivityCard__Type">
       {{ type }}
     </div>
@@ -42,11 +45,11 @@ export default {
   },
   computed: {
     name: () => store.state.activityStore.activity.activity,
-    // gif: () => store.state.activityStore.gif,
     accessibility: () => store.state.activityStore.activity.accessibility,
     price: () => store.state.activityStore.activity.price,
     type: () => store.state.activityStore.activity.type,
     participants: () => store.state.activityStore.activity.participants,
+    gif: () => store.state.activityStore.gif,
   },
 };
 </script>
@@ -64,6 +67,20 @@ export default {
   &__Image {
     background-color: #000;
     width: 50%;
+    background-size: cover;
+    background-position: center center;
+    position: relative;
+
+    &::after {
+      @include blue-fade-right-to-left;
+      width: 150px;
+      height: 100%;
+      display: block;
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+    }
   }
 
   &__Type {
@@ -77,6 +94,7 @@ export default {
   }
 
   &__Activity {
+    z-index: 10;
     @include styled-orange-gradient;
 
     border-top-right-radius: 15px;
