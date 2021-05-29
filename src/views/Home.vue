@@ -2,6 +2,7 @@
   <div class="HomeView">
     <Layout>
       <Introduction v-if="!hasActivity" />
+      <ActivityLoading v-else-if="isFetching" />
       <Activity v-else />
       <BoredButton />
     </Layout>
@@ -14,6 +15,7 @@ import store from '@/store';
 import Layout from '@/components/Layout';
 import BoredButton from '@/components/BoredButton';
 import Introduction from '@/components/Introduction';
+import ActivityLoading from '@/components/ActivityLoading';
 import Activity from '@/components/Activity';
 
 export default {
@@ -22,11 +24,15 @@ export default {
     Layout,
     BoredButton,
     Introduction,
+    ActivityLoading,
     Activity,
   },
   computed: {
     hasActivity() {
       return store.state.activityStore.hasActivity;
+    },
+    isFetching() {
+      return store.state.activityStore.isFetching;
     },
   },
 };
