@@ -1,7 +1,7 @@
 <template>
   <div class="HomeView">
     <Layout>
-      <Introduction v-if="!hasActivity" />
+      <Introduction v-if="!hasActivity && !isFetching" />
       <ActivityLoading v-else-if="isFetching" />
       <Activity v-else />
       <BoredButton />
