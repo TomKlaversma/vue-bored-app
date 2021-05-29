@@ -6,3 +6,12 @@
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00000000', endColorstr='#82000000',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
 
 }
+
+@mixin styled-gradient-overlay {
+  /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#2ea8ea+0,6d29db+49,a423af+100&0.2+0,0.2+100 */
+background: -moz-linear-gradient(45deg,  rgba(46,168,234,0.2) 0%, rgba(109,41,219,0.2) 49%, rgba(164,35,175,0.2) 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(45deg,  rgba(46,168,234,0.2) 0%,rgba(109,41,219,0.2) 49%,rgba(164,35,175,0.2) 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(45deg,  rgba(46,168,234,0.2) 0%,rgba(109,41,219,0.2) 49%,rgba(164,35,175,0.2) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#332ea8ea', endColorstr='#33a423af',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+
+}
