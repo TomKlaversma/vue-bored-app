@@ -1,7 +1,9 @@
 <template>
   <div class="Activity">
-    Listen up, this is what your going do...
-    <h1>{{ name }}</h1>
+    <span class="Activity__LeaderText">
+      I got something for you...<br>
+    </span>
+    <span class="Activity__LeaderText__Activity">{{ name }}</span>
   </div>
 </template>
 
@@ -16,3 +18,19 @@ export default {
   },
 };
 </script>
+
+<style scoped lang="scss">
+ .Activity {
+    text-align:center;
+
+    &__LeaderText {
+      font-size: 4em;
+
+      &__Activity {
+        line-height: 0.8em;
+        font-size: 9em;
+        font-family: 'Limelight', cursive;
+      }
+    }
+ }
+</style>

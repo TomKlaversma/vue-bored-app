@@ -1,6 +1,8 @@
 <template>
   <div class="BoredButton">
     <vs-button
+      gradient
+      size="xl"
       :loading="isLoading"
       @click="getActivity"
     >
@@ -31,4 +33,8 @@ export default {
 </script>
 
 <style scoped lang="scss">
+.BoredButton {
+  margin: 42px auto;
+  display: inline-block;
+}
 </style>
