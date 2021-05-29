@@ -1,36 +1,30 @@
 <template>
   <div class="Activity">
-    <span class="Activity__LeaderText">
-      I got something for you...<br>
-    </span>
-    <span class="Activity__LeaderText__Activity">{{ name }}</span>
+    <div class="Activity__LeaderText">
+      I got something for you...
+    </div>
+    <ActivityCard />
   </div>
 </template>
 
 <script>
-import store from '@/store';
+import ActivityCard from './ActivityCard';
 
 export default {
-  name: 'Activity',
-  computed: {
-    isLoading: () => store.state.activityStore.isFetching,
-    name: () => store.state.activityStore.activity.activity,
+  components: {
+    ActivityCard,
   },
 };
 </script>
 
-<style scoped lang="scss">
- .Activity {
-    text-align:center;
+<style lang="scss" scoped>
+.Activity {
+  position: relative;
 
-    &__LeaderText {
-      font-size: 4em;
-
-      &__Activity {
-        line-height: 0.8em;
-        font-size: 9em;
-        font-family: 'Limelight', cursive;
-      }
-    }
- }
+  &__LeaderText {
+    font-style: italic;
+    font-size: 36px;
+    margin-bottom: 60px;
+  }
+}
 </style>
