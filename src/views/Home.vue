@@ -1,14 +1,8 @@
 <template>
   <div class="HomeView">
-    <div class="HomeView__Gif">
-      <img
-        class="HomeView__Gif__Image"
-        src="https://media.giphy.com/media/3osxYjtC4fWCvJRfJm/giphy.gif"
-      >
-    </div>
     <Layout>
       <Introduction v-if="!hasActivity" />
-      <Activity v-else />
+      <ActivityCard v-else />
       <BoredButton />
     </Layout>
   </div>
@@ -20,7 +14,7 @@ import store from '@/store';
 import Layout from '@/components/Layout';
 import BoredButton from '@/components/BoredButton';
 import Introduction from '@/components/Introduction';
-import Activity from '@/components/Activity';
+import ActivityCard from '@/components/ActivityCard';
 
 export default {
   name: 'Home',
@@ -28,7 +22,7 @@ export default {
     Layout,
     BoredButton,
     Introduction,
-    Activity,
+    ActivityCard,
   },
   computed: {
     hasActivity() {
@@ -40,25 +34,12 @@ export default {
 
 <style scoped lang="scss">
 .HomeView {
+  @include styled-gradient-overlay;
   height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
   text-align: center;
-  @include vignette;
-
-  &__Gif {
-    width: 100%;
-    height: 100vh;
-    position: fixed;
-    opacity: 0.8;
-    top: 0;
-    left: 0;
-    z-index: -1;
-
-    &__Image {
-      width: 100%;
-    }
-  }
+  color: $white;
 }
 </style>
