@@ -30,6 +30,10 @@ export default {
 
 <style scoped lang="scss">
 .HomeView {
-
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
 }
 </style>
