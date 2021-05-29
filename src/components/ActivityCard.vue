@@ -1,28 +1,23 @@
 <template>
-  <div class="Activity">
-    <div class="Activity__LeaderText">
-      I got something for you...
-    </div>
-    <div class="Activity__Card">
-      <div class="Activity__Card__Image" />
-      <div class="Activity__Card__Activity">
-        <div class="Activity__Title">
-          {{ name }}
+  <div class="ActivityCard">
+    <div class="ActivityCard__Image" />
+    <div class="ActivityCard__Activity">
+      <div class="ActivityCard__Title">
+        {{ name }}
+      </div>
+      <div class="ActivityCard__Description">
+        <div class="ActivityCard__Description__Field">
+          <RatingBar
+            label="Accessibility"
+            :rating="accessibility"
+          />
         </div>
-        <div class="Activity__Description">
-          <div class="Activity__Description__Field">
-            <RatingBar
-              label="Accessibility"
-              :rating="accessibility"
-            />
-          </div>
-          <div class="Activity__Description__Field">
-            <RatingBar
-              label="Price"
-              type="price"
-              :rating="price"
-            />
-          </div>
+        <div class="ActivityCard__Description__Field">
+          <RatingBar
+            label="Price"
+            type="price"
+            :rating="price"
+          />
         </div>
       </div>
     </div>
@@ -48,43 +43,33 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.Activity {
-  position: relative;
+.ActivityCard {
+  box-shadow: 0px 20px 64px rgba(255, 197, 90, 0.2);
+  display: flex;
+  flex-direction: row;
+  border-radius: 15px;
+  overflow: hidden;
+  min-width: 70%;
 
-  &__LeaderText {
-    font-style: italic;
-    font-size: 36px;
-    margin-bottom: 60px;
+  &__Image {
+    background-color: #000;
+    width: 50%;
   }
 
-  &__Card {
-    box-shadow: 0px 20px 64px rgba(255, 197, 90, 0.2);
-    display: flex;
-    flex-direction: row;
-    border-radius: 15px;
-    overflow: hidden;
-    min-width: 70%;
+  &__Activity {
+    @include styled-orange-gradient;
 
-    &__Image {
-      background-color: #000;
-      width: 50%;
-    }
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
 
-    &__Activity {
-      @include styled-orange-gradient;
+    border-top: 2px solid rgb(255, 197, 90);
+    border-right: 2px solid rgb(255, 197, 90);
+    border-bottom: 2px solid rgb(255, 197, 90);
 
-      border-top-right-radius: 15px;
-      border-bottom-right-radius: 15px;
+    width: 50%;
+    padding: 75px;
 
-      border-top: 2px solid rgb(255, 197, 90);
-      border-right: 2px solid rgb(255, 197, 90);
-      border-bottom: 2px solid rgb(255, 197, 90);
-
-      width: 50%;
-      padding: 75px;
-
-      text-align: left;
-    }
+    text-align: left;
   }
 
   &__Title {

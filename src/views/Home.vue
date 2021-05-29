@@ -2,7 +2,7 @@
   <div class="HomeView">
     <Layout>
       <Introduction v-if="!hasActivity" />
-      <ActivityCard v-else />
+      <Activity v-else />
       <BoredButton />
     </Layout>
   </div>
@@ -14,7 +14,7 @@ import store from '@/store';
 import Layout from '@/components/Layout';
 import BoredButton from '@/components/BoredButton';
 import Introduction from '@/components/Introduction';
-import ActivityCard from '@/components/ActivityCard';
+import Activity from '@/components/Activity';
 
 export default {
   name: 'Home',
@@ -22,7 +22,7 @@ export default {
     Layout,
     BoredButton,
     Introduction,
-    ActivityCard,
+    Activity,
   },
   computed: {
     hasActivity() {
