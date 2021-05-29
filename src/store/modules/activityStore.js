@@ -1,7 +1,9 @@
-import boredService from '@/services/boredService';
+import axios from 'axios';
+import { BACKEND_PATH } from '../../config';
 
 const ACTIVITY_REQUEST = 'ACTIVITY_REQUEST';
 const ACTIVITY_REQUEST_SUCCESS = 'ACTIVITY_REQUEST_SUCCESS';
+const ACTIVITY_REQUEST_FAILED = 'ACTIVITY_REQUEST_FAILED';
 
 const initialState = {
   hasActivity: false,
@@ -15,11 +17,12 @@ const initialState = {
     link: null,
     key: null,
   },
+  error: null,
 };
 
 const mutations = {
-  [ACTIVITY_REQUEST_SUCCESS]: (state, payload) => {
-    state.activity = payload;
+  [ACTIVITY_REQUEST_SUCCESS]: (state, activity) => {
+    state.activity = activity;
     state.hasActivity = true;
     state.isFetching = false;
   },
@@ -27,13 +30,23 @@ const mutations = {
     state.hasActivity = false;
     state.isFetching = true;
   },
+  [ACTIVITY_REQUEST_FAILED]: (state, error) => {
+    state.isFetching = false;
+    state.error = error;
+  },
 };
 
 const actions = {
-  getActivity: async ({ commit }, options) => {
+  getActivity: async ({ commit }) => {
     commit(ACTIVITY_REQUEST);
-    const activity = await boredService.getActivity(options);
-    commit(ACTIVITY_REQUEST_SUCCESS, activity);
+
+    const response = await axios.get(`${BACKEND_PATH}/activity/random`);
+
+    if (response instanceof Error) {
+      return commit(ACTIVITY_REQUEST_FAILED, response);
+    }
+
+    return commit(ACTIVITY_REQUEST_SUCCESS, response.data.body);
   },
 };
 
