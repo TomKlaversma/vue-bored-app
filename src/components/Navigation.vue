@@ -4,6 +4,7 @@
       v-model="active"
       color="#7d33ff"
       square
+      text-white
       center-collapsed
     >
       <template #left />
@@ -31,7 +32,7 @@
 export default {
   data() {
     return {
-      active: '/',
+      active: window.location.pathname,
     };
   },
 };

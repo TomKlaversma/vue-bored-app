@@ -33,4 +33,8 @@ export default {
 </script>
 
 <style scoped lang="scss">
+.BoredButton {
+  margin: 42px auto;
+  display: inline-block;
+}
 </style>
