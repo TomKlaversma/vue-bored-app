@@ -11,19 +11,16 @@
         </div>
         <div class="Activity__Description">
           <div class="Activity__Description__Field">
-            Accessibility
-            <div class="Activity__Rating" />
-            <div
-              class="Activity__Rating--active"
-              :style="{'width': accessibility}"
+            <RatingBar
+              label="Accessibility"
+              :rating="accessibility"
             />
           </div>
           <div class="Activity__Description__Field">
-            Price
-            <div class="Activity__Rating" />
-            <div
-              class="Activity__Rating--active"
-              :style="{'width': price}"
+            <RatingBar
+              label="Price"
+              type="price"
+              :rating="price"
             />
           </div>
         </div>
@@ -34,14 +31,18 @@
 
 <script>
 import store from '@/store';
+import RatingBar from './RatingBar';
 
 export default {
   name: 'ActivityCard',
+  components: {
+    RatingBar,
+  },
   computed: {
     name: () => store.state.activityStore.activity.activity,
     // gif: () => store.state.activityStore.gif,
-    accessibility: () => `${store.state.activityStore.activity.accessibility * 100}%`,
-    price: () => `${store.state.activityStore.activity.price * 100}%`,
+    accessibility: () => store.state.activityStore.activity.accessibility,
+    price: () => store.state.activityStore.activity.price,
   },
 };
 </script>
@@ -62,6 +63,7 @@ export default {
     flex-direction: row;
     border-radius: 15px;
     overflow: hidden;
+    min-width: 70%;
 
     &__Image {
       background-color: #000;
@@ -86,35 +88,22 @@ export default {
   }
 
   &__Title {
+    @include font-primary;
+    text-shadow: 4px 4px 1px rgb(67 24 92 / 72%);
     font-size: 6.4em;
     line-height: 1em;
-    @include font-primary;
     margin-left: -1.5em;
   }
 
   &__Description {
+    display: flex;
+    flex-direction: row;
     margin-top: 24px;
 
     &__Field {
+      width: 50%;
       position: relative;
     }
-  }
-
-  &__Rating,
-  &__Rating--active {
-    font-size: 24px;
-    max-width: calc(35px * 5);
-    background-image: url('../assets/star.svg');
-    background-repeat: repeat-x;
-    height: 35px;
-    opacity: 0.2;
-    margin-left: -7px;
-  }
-
-  &__Rating--active {
-    width: auto;
-    margin-top: -35px;
-    opacity: 1;
   }
 }
 </style>
