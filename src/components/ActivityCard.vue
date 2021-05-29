@@ -1,6 +1,9 @@
 <template>
   <div class="ActivityCard">
     <div class="ActivityCard__Image" />
+    <div class="ActivityCard__Type">
+      {{ type }}
+    </div>
     <div class="ActivityCard__Activity">
       <div class="ActivityCard__Title">
         {{ name }}
@@ -18,6 +21,10 @@
             type="price"
             :rating="price"
           />
+        </div>
+        <div class="ActivityCard__Description__Field">
+          Participants
+          <br><span class="ActivityCard__Participants">{{ participants }}</span>
         </div>
       </div>
     </div>
@@ -38,22 +45,35 @@ export default {
     // gif: () => store.state.activityStore.gif,
     accessibility: () => store.state.activityStore.activity.accessibility,
     price: () => store.state.activityStore.activity.price,
+    type: () => store.state.activityStore.activity.type,
+    participants: () => store.state.activityStore.activity.participants,
   },
 };
 </script>
 
 <style scoped lang="scss">
 .ActivityCard {
-  box-shadow: 0px 20px 64px rgba(255, 197, 90, 0.2);
+  position: relative;
   display: flex;
   flex-direction: row;
   border-radius: 15px;
-  overflow: hidden;
   min-width: 70%;
+  overflow: hidden;
+  box-shadow: 0px 20px 64px rgba(255, 197, 90, 0.2);
 
   &__Image {
     background-color: #000;
     width: 50%;
+  }
+
+  &__Type {
+    position: absolute;
+    top: 0;
+    left: 40px;
+    padding: 18px;
+    text-align: center;
+    border-bottom-left-radius: 10px;
+    @include styled-orange-gradient;
   }
 
   &__Activity {
@@ -86,9 +106,16 @@ export default {
     margin-top: 24px;
 
     &__Field {
-      width: 50%;
+      width: 40%;
       position: relative;
     }
+  }
+
+  &__Participants {
+    font-size: 32px;
+    width: 20%;
+    position: relative;
+    color: rgb(42, 25, 68);
   }
 }
 </style>
