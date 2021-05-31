@@ -27,7 +27,10 @@
         </div>
         <div class="ActivityCard__Description__Field">
           Participants
-          <br><span class="ActivityCard__Participants">{{ participants }}</span>
+          <br>
+          <span class="ActivityCard__Participants">
+            <font-awesome-icon icon="user-friends" /> {{ participants }}
+          </span>
         </div>
       </div>
     </div>
@@ -134,6 +137,10 @@ export default {
     width: 20%;
     position: relative;
     color: rgb(42, 25, 68);
+
+    &__Icon {
+      max-width: 35px;
+    }
   }
 }
 </style>
