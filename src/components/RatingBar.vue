@@ -62,7 +62,8 @@ export default {
   }
 
   &__Stars--active {
-    min-width: 35px;
+    background-size: 35px;
+    min-height: 35px;
     top: -3px;
     left: -3px;
     opacity: 1;
